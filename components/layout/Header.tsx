@@ -26,42 +26,34 @@ export default function Header() {
           {/* Logo */}
           <a href="#" className="flex items-baseline gap-2">
             <span
-              className="text-2xl font-bold text-[#2563eb]"
+              className={`text-2xl font-bold transition-colors ${scrolled ? "text-[#2563eb]" : "text-white"}`}
               style={{ fontFamily: "var(--font-montserrat)" }}
             >
               ANKII
             </span>
-            <span className="text-xs text-[#64748b] font-medium hidden sm:inline">
+            <span className={`text-xs font-medium hidden sm:inline transition-colors ${scrolled ? "text-[#64748b]" : "text-white/50"}`}>
               by Skillfolio
             </span>
           </a>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            <a
-              href="#programs"
-              className="text-sm font-medium text-[#0f172a] hover:text-[#2563eb] transition-colors"
-            >
-              Программы
-            </a>
-            <a
-              href="#departments"
-              className="text-sm font-medium text-[#0f172a] hover:text-[#2563eb] transition-colors"
-            >
-              Отделы
-            </a>
-            <a
-              href="#pricing"
-              className="text-sm font-medium text-[#0f172a] hover:text-[#2563eb] transition-colors"
-            >
-              Цены
-            </a>
-            <a
-              href="#about"
-              className="text-sm font-medium text-[#0f172a] hover:text-[#2563eb] transition-colors"
-            >
-              О нас
-            </a>
+            {[
+              { href: "#programs", label: "Программы" },
+              { href: "#departments", label: "Отделы" },
+              { href: "#pricing", label: "Цены" },
+              { href: "#about", label: "О нас" },
+            ].map(({ href, label }) => (
+              <a
+                key={href}
+                href={href}
+                className={`text-sm font-medium transition-colors hover:text-[#2563eb] ${
+                  scrolled ? "text-[#0f172a]" : "text-white/80"
+                }`}
+              >
+                {label}
+              </a>
+            ))}
           </nav>
 
           {/* CTA */}
