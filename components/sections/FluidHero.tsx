@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Link from 'next/link';
 
 export default function FluidHero() {
   const scriptLoaded = useRef(false);
@@ -10,23 +9,32 @@ export default function FluidHero() {
     if (scriptLoaded.current) return;
     scriptLoaded.current = true;
 
-    const script = document.createElement('script');
-    script.src = '/fluid.js';
-    script.async = true;
-    document.body.appendChild(script);
+    // Явно ставим размеры canvas до загрузки скрипта
+    const canvas = document.getElementById('fluid-canvas') as HTMLCanvasElement;
+    if (canvas) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
 
-    return () => {
-      // cleanup: script stays, simulation stops when canvas unmounts
-    };
+    // Грузим скрипт после того как layout точно отрисован
+    requestAnimationFrame(() => {
+      const script = document.createElement('script');
+      script.src = '/fluid.js';
+      script.onerror = (e) => console.error('fluid.js load error', e);
+      document.body.appendChild(script);
+    });
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center overflow-hidden bg-[#050510]">
+    <section
+      className="relative w-full flex items-center overflow-hidden bg-[#050510]"
+      style={{ height: '100vh' }}
+    >
       {/* WebGL canvas — full section background */}
       <canvas
         id="fluid-canvas"
-        className="absolute inset-0 w-full h-full"
-        style={{ display: 'block' }}
+        className="absolute inset-0"
+        style={{ display: 'block', width: '100%', height: '100%' }}
       />
 
       {/* Dark gradient overlay at bottom for text readability */}
