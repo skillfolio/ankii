@@ -1,9 +1,5 @@
-[nixpacks]
-nodejs.version = "20"
-
 [build]
-builder = "nixpacks"
-buildCommand = "npm run build"
+builder = "dockerfile"
 
 [deploy]
 startCommand = "npm run start"
