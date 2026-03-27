@@ -13,15 +13,22 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Обучение ИИ для компаний | Skillfolio",
+  title: {
+    default: "АНКИИ — Академия надпрофессиональных компетенций и ИИ",
+    template: "%s | АНКИИ",
+  },
   description:
-    "Обучаем сотрудников работать с ИИ эффективно и без рисков. Готовые промты, ИИ-агенты под каждый отдел, удостоверения государственного образца. Резидент Сколково и Сириус.",
+    "Лицензированное дополнительное профессиональное образование. 17 программ ДПО, онлайн-курсы Soft Skills и корпоративное обучение ИИ. Резидент Сколково и Сириус.",
   openGraph: {
-    title: "Обучение ИИ для компаний | Skillfolio",
+    title: "АНКИИ — Академия надпрофессиональных компетенций и ИИ",
     description:
-      "Обучаем сотрудников работать с ИИ эффективно и без рисков. Готовые промты, ИИ-агенты под каждый отдел, удостоверения государственного образца.",
+      "Лицензированное ДПО, онлайн-курсы Soft Skills и корпоративное обучение ИИ для психологов, педагогов и команд.",
     locale: "ru_RU",
     type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -31,11 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ru"
-      className={`${inter.variable} ${montserrat.variable}`}
-    >
-      <body className="min-h-full flex flex-col font-[var(--font-inter)] antialiased">
+    <html lang="ru" className={`${inter.variable} ${montserrat.variable}`}>
+      <body className="min-h-full flex flex-col antialiased">
         {children}
       </body>
     </html>
