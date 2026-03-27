@@ -1,6 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import FluidHero from "@/components/sections/FluidHero";
+import Hero from "@/components/sections/Hero";
 import Benefits from "@/components/sections/Benefits";
 import Programs from "@/components/sections/Programs";
 import Departments from "@/components/sections/Departments";
@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <FluidHero />
+        <Hero />
         <Benefits />
         <Programs />
         <Departments />

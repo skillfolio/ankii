@@ -26,12 +26,12 @@ export default function Header() {
           {/* Logo */}
           <a href="#" className="flex items-baseline gap-2">
             <span
-              className={`text-2xl font-bold transition-colors ${scrolled ? "text-[#2563eb]" : "text-white"}`}
+              className="text-2xl font-bold text-[#2563eb]"
               style={{ fontFamily: "var(--font-montserrat)" }}
             >
               ANKII
             </span>
-            <span className={`text-xs font-medium hidden sm:inline transition-colors ${scrolled ? "text-[#64748b]" : "text-white/50"}`}>
+            <span className="text-xs text-[#64748b] font-medium hidden sm:inline">
               by Skillfolio
             </span>
           </a>
@@ -47,9 +47,7 @@ export default function Header() {
               <a
                 key={href}
                 href={href}
-                className={`text-sm font-medium transition-colors hover:text-[#2563eb] ${
-                  scrolled ? "text-[#0f172a]" : "text-white/80"
-                }`}
+                className="text-sm font-medium text-[#0f172a] hover:text-[#2563eb] transition-colors"
               >
                 {label}
               </a>
